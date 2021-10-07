@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useHistory
 } from "react-router-dom";
 
 import * as React from 'react';
@@ -13,6 +14,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+
+import BasicTabs from './DetailsTab';
 
 const serviceLineTableColumns = [
   { title: "Name", field: "name" },
@@ -33,6 +37,20 @@ const data = [{
   status: "Enabled",
   consultType: "All",
 }];
+
+function EditButton() {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push("/BasicTabs");
+  }
+
+  return (
+    <Button onClick={handleClick}>
+      Edit
+    </Button>
+  );
+}
 
 export default function LocationsTable() {
 
@@ -58,7 +76,7 @@ export default function LocationsTable() {
             <TableCell align="right">{row.consultType}</TableCell>
             <TableCell align="right">
               <Router>
-                <Link to={row.name}>Edit</Link>
+                <EditButton/>
               </Router>
             </TableCell>
           </TableRow>
