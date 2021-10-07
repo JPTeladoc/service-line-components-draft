@@ -3,7 +3,7 @@ This repo intention is to provide a way of getting feedback of the service line 
 
 # Requirements
 - A github access token is necesary (GAT).
-- CIG components from InTouch's github repo.
+- Access to CIG components from InTouch's github repo.
 
 # Usage
 After you got one, make sure it replaces the placeholder in the `.npmrc` file at root folder. 
