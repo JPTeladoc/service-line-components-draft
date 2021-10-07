@@ -1,8 +1,11 @@
-import { PureInput, materialUI, SearchIcon, colors } from "@intouchhealth/cig-components";
 import { useState } from "react";
 import * as React from "react";
 
-const { Grid, Typography, Box } = materialUI;
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid'
+import Input from '@mui/material/Input'
+import Typography from '@mui/material/Typography';
 
 interface FieldProps {
   inputValue: string;
@@ -10,9 +13,9 @@ interface FieldProps {
 
 const Field = (props: FieldProps) => {
   const [serialNumber, setSerialNumber] = useState<string>();
-  return(<PureInput
+  return(<Input
     placeholder={(props.inputValue)}
-    onChange={(value) => setSerialNumber(value)}
+    onChange={(value) => (value)}
     value={serialNumber}
   />);
 }

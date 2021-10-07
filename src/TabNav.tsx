@@ -4,15 +4,20 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
-import { Table } from "@intouchhealth/cig-components";
+import Button from '@mui/material/Button';
 import DetailsTab from "./DetailsTab"
 import LocationsTab from "./LocationsTab"
+
+import { useHistory } from 'react-router-dom'
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+}
+
+interface IProps {
+  text: string;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -35,6 +40,22 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+const ReturnButton: React.FC<IProps> = ({
+  text
+  }) => {
+    const history = useHistory();
+
+    function handleClick() {
+      history.push("/");
+    }
+
+    return (
+      <Button onClick={handleClick}>
+        {text}
+      </Button>
+    );
+};
+
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
@@ -44,6 +65,10 @@ export default function BasicTabs() {
 
   return (
     <div style={{backgroundColor:'white', width:'80%'}}>
+      <Box sx={{ display: 'flex-end', p: 1, color: 'black', bgcolor: 'background.paper', width: '70%' }}>
+        <ReturnButton text={'Cancel'}/>
+        <ReturnButton text={'Save'} />
+      </Box>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Details" />

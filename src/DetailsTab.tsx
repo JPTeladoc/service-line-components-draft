@@ -1,15 +1,15 @@
-import { PureInput, materialUI, colors, Menu } from "@intouchhealth/cig-components";
 import { useState } from "react";
 import * as React from "react";
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-import { DeviceIcon, DomainIcon, PractitionerIcon } from "@intouchhealth/cig-components";
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid'
+import Input from '@mui/material/Input'
 
 import { styled } from '@mui/material/styles';
-
-const { Grid, Box } = materialUI;
 
 interface FieldProps {
   inputValue: string;
@@ -17,35 +17,18 @@ interface FieldProps {
 
 const Field = (props: FieldProps) => {
   const [serialNumber, setSerialNumber] = useState<string>();
-  return (<PureInput
+  return (<Input
     placeholder={(props.inputValue)}
-    onChange={(value) => setSerialNumber(value)}
+    onChange={(value) => (value)}
     value={serialNumber}
   />);
 }
 
-const items = [
-  {
-    value: 10,
-    name: "Log Service",
-    icon: <DeviceIcon />,
-  },
-  {
-    value: 20,
-    name: "Monitoring",
-    icon: <DomainIcon />,
-  },
-  {
-    value: 30,
-    name: "Practitioner Registry",
-    icon: <PractitionerIcon />,
-  },
-];
-
 export default function DetailsTab() {
   return (
-      <Grid container spacing={2}>
-        <Grid container xs={12} spacing={2}>
+    <>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid container xs={12} spacing={2} padding={2}>
           <Grid item xs={4} >
             <Typography align="right" color='black' fontWeight="bold">Name:</Typography>
           </Grid>
@@ -58,7 +41,7 @@ export default function DetailsTab() {
           <Grid item xs={8}>
             <TextField fullWidth defaultValue={'General Medical'} />
           </Grid>
-          <Grid item xs={4} sx={{ align: 'right' }} justify="flex-end">
+          <Grid item xs={4} justifyContent="flex-end">
             <Typography align="right" color='black' fontWeight="bold">Explanation</Typography>
           </Grid>
           <Grid item xs={8}>
@@ -81,10 +64,12 @@ export default function DetailsTab() {
               <TextField />
             </Grid>
           </Grid>
-          <Grid container xs={5}>
-            <Menu selectedValue="" items={items} onClick={() => { }} title="" />
+          <Grid container xs={3} padding={2}>
+            <Typography align="right" color='black' fontWeight="bold">Here goes the menu</Typography>
+            <Menu open={false} />
           </Grid>
         </Grid>
       </Grid>
+      </>
   )
 };
