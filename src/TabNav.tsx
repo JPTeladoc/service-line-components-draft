@@ -32,7 +32,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3}}>
+        <Box sx={{ p: 3 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -42,18 +42,18 @@ function TabPanel(props: TabPanelProps) {
 
 const ReturnButton: React.FC<IProps> = ({
   text
-  }) => {
-    const history = useHistory();
+}) => {
+  const history = useHistory();
 
-    function handleClick() {
-      history.push("/");
-    }
+  function handleClick() {
+    history.push("/");
+  }
 
-    return (
-      <Button onClick={handleClick}>
-        {text}
-      </Button>
-    );
+  return (
+    <Button onClick={handleClick}>
+      {text}
+    </Button>
+  );
 };
 
 export default function BasicTabs() {
@@ -64,27 +64,36 @@ export default function BasicTabs() {
   };
 
   return (
-    <div style={{backgroundColor:'white', width:'80%'}}>
-      <Box sx={{ display: 'flex-end', p: 1, color: 'black', bgcolor: 'background.paper', width: '70%' }}>
-        <ReturnButton text={'Cancel'}/>
-        <ReturnButton text={'Save'} />
-      </Box>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange}>
-          <Tab label="Details" />
-          <Tab label="Location"  />
-          <Tab label="Templates" />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        <DetailsTab />
-      </TabPanel>
-      <TabPanel value={value} index={1} >
-        <LocationsTab />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <div style={{ backgroundColor: 'white', width: '80%' }}>
+        <Box sx={{ display: 'flex-end', p: 1, color: 'black', bgcolor: 'background.paper', width: '70%' }}>
+          <ReturnButton text={'Cancel'} />
+          <ReturnButton text={'Save'} />
+        </Box>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange}>
+            <Tab label="Details" />
+            <Tab label="Location" />
+            <Tab label="Templates" />
+          </Tabs>
+        </Box>
+        <TabPanel value={value} index={0}>
+          <DetailsTab />
+        </TabPanel>
+        <TabPanel value={value} index={1} >
+          <LocationsTab />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Item Three
+        </TabPanel>
       </div>
+    </Grid>
   );
 }
