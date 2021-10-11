@@ -12,12 +12,6 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'
 
-const serviceLineTableColumns = [
-  { title: "Name", field: "name" },
-  { title: "Status", field: "status" },
-  { title: "ConsultType", field: "consultType" },
-];
-
 const data = [{
   name: "General Medical",
   status: "Enabled",
@@ -85,7 +79,3 @@ export default function LocationsTable() {
 
   );
 };
-
-
-
-  // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
