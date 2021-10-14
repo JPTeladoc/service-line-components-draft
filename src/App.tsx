@@ -7,7 +7,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/BasicTabs" component={BasicTabs} />
+          <Route path="/General Medical" component={BasicTabs} />
           <Route path="/" component={LocationsTable} />
         </Switch>
       </BrowserRouter>

@@ -56,6 +56,8 @@ const ReturnButton: React.FC<IProps> = ({
   );
 };
 
+
+//Aca podria pasarle un id con el cual otro metodo rellenaria el contenido a mostrar en cada Tab.
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
@@ -73,10 +75,14 @@ export default function BasicTabs() {
       style={{ minHeight: '100vh' }}
     >
       <div style={{ backgroundColor: 'white', width: '80%' }}>
-        <Box sx={{ display: 'flex-end', p: 1, color: 'black', bgcolor: 'background.paper', width: '70%' }}>
-          <ReturnButton text={'Cancel'} />
-          <ReturnButton text={'Save'} />
-        </Box>
+        <div style={{ width: '100%' }}>
+          <Box sx={{ display: 'flex', p: 1, bgcolor: 'background.paper', alignItems:'baseline'}}>
+            <Box component="span" sx={{ p: 2, flexGrow: 1, bgcolor: 'grey.300' }}> Edit Service Line: General Medical</Box>
+            <Box sx={{ p: 1, bgcolor: 'grey.300' }}> <ReturnButton text={'Cancel'} /></Box>
+            <Box sx={{ p: 1, bgcolor: 'grey.300' }}> <ReturnButton text={'Save'} /></Box>
+          </Box>
+        </div>
+
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
             <Tab label="Details" />

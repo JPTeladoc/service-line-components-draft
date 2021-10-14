@@ -27,25 +27,25 @@ const Field = (props: FieldProps) => {
 export default function DetailsTab() {
   return (
     <>
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid container xs={12} spacing={2} padding={2}>
+      <Grid container spacing={2} justifyContent="center">
+        <Grid container xs={12} spacing={2} padding={2} sx={{alignItems:'center'}}>
           <Grid item xs={4} >
             <Typography align="right" color='black' fontWeight="bold">Name:</Typography>
           </Grid>
           <Grid item xs={8}>
-            <TextField fullWidth defaultValue={'General Medical'} />
+            <TextField size="small" variant="outlined" fullWidth defaultValue={'General Medical'} />
           </Grid>
           <Grid item xs={4}>
             <Typography align="right" color='black' fontWeight="bold">Display Name:</Typography>
           </Grid>
           <Grid item xs={8}>
-            <TextField fullWidth defaultValue={'General Medical'} />
+            <TextField size="small" fullWidth defaultValue={'General Medical'} />
           </Grid>
           <Grid item xs={4} justifyContent="flex-end">
             <Typography align="right" color='black' fontWeight="bold">Explanation</Typography>
           </Grid>
           <Grid item xs={8}>
-            <TextField multiline fullWidth defaultValue={"Get care 24/7 for non-emergency conditions like & flue, sinus infection, allergies, and more"} />
+            <TextField size="small" multiline fullWidth defaultValue={"Get care 24/7 for non-emergency conditions like & flue, sinus infection, allergies, and more"} />
           </Grid>
         </Grid>
 
