@@ -1,15 +1,15 @@
 import { useState } from "react";
-import * as React from "react";
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 import Menu from '@mui/material/Menu';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid'
 import Input from '@mui/material/Input'
 
 import { styled } from '@mui/material/styles';
+
+import { InjectFont } from "@intouchhealth/cig-components"
 
 interface FieldProps {
   inputValue: string;
@@ -27,10 +27,12 @@ const Field = (props: FieldProps) => {
 export default function DetailsTab() {
   return (
     <>
+    <InjectFont family="Montserrat"/>
+    <Paper>
       <Grid container spacing={2} justifyContent="center">
         <Grid container xs={12} spacing={2} padding={2} sx={{alignItems:'center'}}>
-          <Grid item xs={4} >
-            <Typography align="right" color='black' fontWeight="bold">Name:</Typography>
+          <Grid item xs={4}>
+            Name:
           </Grid>
           <Grid item xs={8}>
             <TextField size="small" variant="outlined" fullWidth defaultValue={'General Medical'} />
@@ -70,6 +72,7 @@ export default function DetailsTab() {
           </Grid>
         </Grid>
       </Grid>
+      </Paper>
       </>
   )
 };
