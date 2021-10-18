@@ -1,7 +1,5 @@
 import { Table } from "@intouchhealth/cig-components"
 import { mockAccessors, mockData } from "./TableMockData";
-
-//Eventualmente buscar reemplazar los @mui con @intouchhealth/cig-components
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 

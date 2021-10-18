@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+import { Typography } from "@intouchhealth/cig-components";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
+import { Button } from "@intouchhealth/cig-components";
 import DetailsTab from "./DetailsTab"
 import LocationsTab from "./LocationsTab"
 
@@ -33,7 +33,9 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+
+            {children}
+
         </Box>
       )}
     </div>
@@ -50,7 +52,8 @@ const ReturnButton: React.FC<IProps> = ({
   }
 
   return (
-    <Button onClick={handleClick}>
+
+    <Button appearance="outline" themeName="warning" size="xs" onClick={handleClick}>
       {text}
     </Button>
   );
@@ -76,18 +79,22 @@ export default function BasicTabs() {
     >
       <div style={{ backgroundColor: 'white', width: '80%' }}>
         <div style={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', p: 1, bgcolor: 'background.paper', alignItems:'baseline'}}>
-            <Box component="span" sx={{ p: 2, flexGrow: 1, bgcolor: 'grey.300' }}> Edit Service Line: General Medical</Box>
-            <Box sx={{ p: 1, bgcolor: 'grey.300' }}> <ReturnButton text={'Cancel'} /></Box>
-            <Box sx={{ p: 1, bgcolor: 'grey.300' }}> <ReturnButton text={'Save'} /></Box>
+          <Box sx={{ display: 'flex', p: 1, alignItems:'baseline'}}>
+            <Box component="span" sx={{ p: 2, flexGrow: 1 }}>
+
+              Edit Service Line: General Medical
+
+            </Box>
+            <Box sx={{ p: 1 }}> <ReturnButton text={'Cancel'} /></Box>
+            <Box sx={{ p: 1 }}> <ReturnButton text={'Save'} /></Box>
           </Box>
         </div>
 
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
-            <Tab label="Details" />
-            <Tab label="Location" />
-            <Tab label="Templates" />
+            <Tab label={<Typography type="h5" >Details</Typography>} />
+            <Tab label={<Typography type="h5" >Location</Typography>} />
+            <Tab label={<Typography type="h5" >Templates</Typography>} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
