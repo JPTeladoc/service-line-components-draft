@@ -81,9 +81,7 @@ export default function BasicTabs() {
         <div style={{ width: '100%' }}>
           <Box sx={{ display: 'flex', p: 1, alignItems:'baseline'}}>
             <Box component="span" sx={{ p: 2, flexGrow: 1 }}>
-
-              Edit Service Line: General Medical
-
+            <Typography type="h3" >Edit Service Line: General Medical</Typography>
             </Box>
             <Box sx={{ p: 1 }}> <ReturnButton text={'Cancel'} /></Box>
             <Box sx={{ p: 1 }}> <ReturnButton text={'Save'} /></Box>
@@ -93,7 +91,8 @@ export default function BasicTabs() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange}>
             <Tab label={<Typography type="h5" >Details</Typography>} />
-            <Tab label={<Typography type="h5" >Location</Typography>} />
+            <Tab label={<Typography type="h5" >General Settings</Typography>} />
+            <Tab label={<Typography type="h5" >Regional Settings</Typography>} />
             <Tab label={<Typography type="h5" >Templates</Typography>} />
           </Tabs>
         </Box>

@@ -21,7 +21,7 @@ const GridField = (props: FieldProps) => {
         <Typography type="h5" > {props.title} </Typography>
       </Grid>
       <Grid item xs={props.rightXs}>
-        <PureInput className={"sarasa"} value={fieldValue} onChange={(v) => setFieldValue(v)} placeholder={props.inputValue} />
+        <PureInput value={fieldValue} onChange={(v) => setFieldValue(v)} placeholder={props.inputValue} />
       </Grid>
     </>
   );
@@ -58,7 +58,7 @@ export default function DetailsTab() {
     <>
       <Paper>
         <Grid container spacing={2} justifyContent="center">
-          <Grid container xs={12} spacing={2} padding={2} sx={{}}>
+          <Grid container xs={12} spacing={1} padding={1} sx={{}}>
             <GridField leftXs={4} rightXs={8} title={'Name:'} inputValue={'General Medical'} />
             <GridField leftXs={4} rightXs={8} title={'Display name:'} inputValue={'General Medical'} />
             <GridField leftXs={4} rightXs={8} title={'Explanation:'} inputValue={'Get care 24/7 for non-emergency conditions like & flue, sinus infection, allergies, and more'} />
@@ -68,11 +68,13 @@ export default function DetailsTab() {
               <Typography type="h5" > Consult types </Typography>
             </Grid>
             <Grid item xs={8} padding={2} >
-              <Table
-                accessors={accessors}
-                data={mock4}
-                checkeableId={"id"}
-              />
+              <>
+                <Table
+                  accessors={accessors}
+                  data={mock4}
+                  checkeableId={"id"}
+                />
+              </>
             </Grid>
           </Grid>
         </Grid>
