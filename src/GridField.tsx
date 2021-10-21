@@ -17,9 +17,6 @@ export default function GridField(props: FieldProps) {
 
   let Field;
 
-  console.log('rendering GridField')
-  console.log(props.div)
-
   if (props.div) {
     console.log('assigning null div')
     Field = props.div
@@ -35,8 +32,6 @@ export default function GridField(props: FieldProps) {
       }}
     />
   }
-
-  console.log(Field)
 
   return (
     <>

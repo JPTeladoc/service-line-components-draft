@@ -3,12 +3,9 @@ import * as React from "react";
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Switch, { SwitchProps } from '@mui/material/Switch';
 import ListItemButton from '@mui/material/ListItemButton';
-import { styled } from '@mui/material/styles';
 
-import ListItemText from '@mui/material/ListItemText';
-import { Card, Typography, Toggle, Select } from '@intouchhealth/cig-components';
+import { Typography, Toggle, Select } from '@intouchhealth/cig-components';
 import GridField from "./GridField"
 import Grid from '@mui/material/Grid';
 
@@ -85,7 +82,6 @@ function SelectMenu() {
      { title: "Choice #2"},
      { title: "Choice #3"},
    ]
-
 
    const [selectedOption, setSelectedOption] = useState<IFilm>( { title: "Select an option" });
 
