@@ -35,6 +35,6 @@ export const mockData = [{
 export const mockAccessors = [
   { label: "Name", key: "name" },
   { label: "Status", key: "status" },
-  { label: "consultType", key: "consultType" },
+  { label: "Consult Type", key: "consultType" },
   { label: "Action", key: "action" },
 ];
