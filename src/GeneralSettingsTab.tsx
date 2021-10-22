@@ -108,11 +108,11 @@ function FirstOption() {
         be configured for entry as shown below
       </Typography>
       <Grid container spacing={1} sx={{paddingTop:'20px' }}>
-        <GridField leftXs={4} rightXs={8} label={'Text Field:'} inputValue={'My Text'} />
-        <GridField leftXs={4} rightXs={8} label={'Num Field:'} inputValue={'12'} />
-        <GridField leftXs={4} rightXs={8} label={'Date Field:'} inputValue={'01/01/2023'} />
-        <GridField leftXs={4} rightXs={8} label={'Time Field:'} inputValue={'12:30 PM'} />
-        <GridField leftXs={4} rightXs={8} label={'Choice Field:'} div={<SelectMenu/>}/>
+        <GridField leftXs={3} rightXs={9} label={'Text Field:'} inputValue={'My Text'} />
+        <GridField leftXs={3} rightXs={9} label={'Num Field:'} inputValue={'12'} />
+        <GridField leftXs={3} rightXs={9} label={'Date Field:'} inputValue={'01/01/2023'} />
+        <GridField leftXs={3} rightXs={9} label={'Time Field:'} inputValue={'12:30 PM'} />
+        <GridField leftXs={3} rightXs={9} label={'Choice Field:'} div={<SelectMenu/>}/>
       </Grid>
     </div>
   )

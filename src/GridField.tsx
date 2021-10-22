@@ -2,6 +2,7 @@ import { Typography } from '@intouchhealth/cig-components';
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 
+{/** Provide the 4-8 left right relationship as default*/ }
 interface FieldProps {
   label: string;
   fontSize?: number
@@ -28,19 +29,21 @@ export default function GridField(props: FieldProps) {
       defaultValue={props.inputValue}
       sx={{ width: "100%" }}
       InputProps={{
-        sx:{fontFamily:'Montserrat', fontSize:inputFontSize}
+        sx: { fontFamily: 'Montserrat', fontSize: inputFontSize }
       }}
     />
   }
 
   return (
-    <>
-      <Grid item xs={props.leftXs} sx={{ display: 'flex', alignItems: 'center', justifyContent: "flex-end" }}>
-        <Typography type="h4" > {props.label} </Typography>
+    <div style={{ width: '100%' }}>
+      <Grid container sx={{ p:0.5 }}>
+        <Grid item xs={props.leftXs} sx={{ display: 'flex', alignItems: 'center', justifyContent: "flex-end", p:1 }}>
+          <Typography type="h4" > {props.label} </Typography>
+        </Grid>
+        <Grid item xs={props.rightXs}>
+          {Field}
+        </Grid>
       </Grid>
-      <Grid item xs={props.rightXs}>
-        {Field}
-      </Grid>
-    </>
+    </div>
   );
 }

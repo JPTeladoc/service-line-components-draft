@@ -1,4 +1,6 @@
 import { Checkbox } from '@intouchhealth/cig-components';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 
 export interface CheckBoxListType{
   items: [string];
@@ -7,19 +9,14 @@ export interface CheckBoxListType{
 
 export default function(props: any) {
   return (
-      <div style={{ height: '100px', overflow: 'scroll' }}>
+      <List sx={{ height: '100%', overflow: 'scroll', border:2, borderRadius:1 }}>
         {props.items.map((elem: any) => {
           return (
-            <Checkbox onCheck={() => { }} label={elem} />
+            <ListItem>
+              <Checkbox onCheck={() => { }} label={elem} />
+            </ListItem>
           )
         })}
-      </div>
+      </List>
   )
 }
-
-
-// <Checkbox onCheck={() => { }} label={"On Demand"} />
-// <Checkbox onCheck={() => { }} label={"Scheduled"} />
-// <Checkbox onCheck={() => { }} label={"Future 1"} />
-// <Checkbox onCheck={() => { }} label={"Future 2"} />
-// <Checkbox onCheck={() => { }} label={"Future 3"} />
