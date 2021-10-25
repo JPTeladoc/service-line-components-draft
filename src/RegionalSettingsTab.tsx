@@ -128,7 +128,6 @@ export default function RegionalSettingsTab() {
               accessors={mockAccessors}
               data={mockData}
             />
-
           </Box>
         </Box>
         <Box sx={{ p: 2 }}>

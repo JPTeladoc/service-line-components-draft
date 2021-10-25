@@ -1,6 +1,7 @@
 import { Typography } from '@intouchhealth/cig-components';
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
 
 {/** Provide the 4-8 left right relationship as default*/ }
 interface FieldProps {
@@ -41,7 +42,9 @@ export default function GridField(props: FieldProps) {
           <Typography type="h4" > {props.label} </Typography>
         </Grid>
         <Grid item xs={props.rightXs}>
+        <Box sx={{ display:'inline-grid', alignItems: 'center', justifyContent: "flex-start"}}>
           {Field}
+        </Box>
         </Grid>
       </Grid>
     </div>
