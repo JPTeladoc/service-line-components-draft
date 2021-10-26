@@ -1,12 +1,13 @@
 import { Typography } from '@intouchhealth/cig-components';
 import Grid from '@mui/material/Grid'
-import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
+import Input from './Input'
 
 {/** Provide the 4-8 left right relationship as default*/ }
 interface FieldProps {
   label: string;
-  fontSize?: number
+  fontType?: number;
+  inputAlignment?: string;
   inputValue?: string;
   leftXs: any;
   rightXs: any;
@@ -15,36 +16,34 @@ interface FieldProps {
 
 export default function GridField(props: FieldProps) {
 
-  const inputFontSize = props.fontSize ?? 14;
+  const inputFontSize = props.fontType ?? "h4";
+  let inputValue = props.inputValue ?? ""
 
   let Field;
+  let itemsAlignment = '';
 
   if (props.div) {
-    console.log('assigning null div')
+    console.log(`div with ${props.label}`)
     Field = props.div
+    itemsAlignment = 'baseline'
   } else {
-    console.log('assigning regular textfield ')
-    Field = <TextField
-      multiline={true}
-      size="small"
-      defaultValue={props.inputValue}
-      sx={{ width: "100%" }}
-      InputProps={{
-        sx: { fontFamily: 'Montserrat', fontSize: inputFontSize }
-      }}
-    />
+    console.log(`without div ${props.label}`)
+    Field = <Input initialValue={inputValue} />
+    itemsAlignment = 'center'
   }
+
+  console.log(itemsAlignment)
 
   return (
     <div style={{ width: '100%' }}>
-      <Grid container sx={{ p:0.5 }}>
-        <Grid item xs={props.leftXs} sx={{ display: 'flex', alignItems: 'center', justifyContent: "flex-end", p:1 }}>
-          <Typography type="h4" > {props.label} </Typography>
+      <Grid container sx={{ p: 0.5 }}>
+        <Grid item xs={props.leftXs} sx={{display: 'flex', alignItems:{itemsAlignment}, justifyContent: "flex-end", p: 1 }}>
+          <Typography type={inputFontSize}> {props.label} </Typography>
         </Grid>
         <Grid item xs={props.rightXs}>
-        <Box sx={{ display:'inline-grid', alignItems: 'center', justifyContent: "flex-start"}}>
-          {Field}
-        </Box>
+          <Box sx={{ alignItems: 'center', justifyContent: "flex-start" }}>
+            {Field}
+          </Box>
         </Grid>
       </Grid>
     </div>

@@ -1,4 +1,4 @@
-import { Typography, Checkbox } from '@intouchhealth/cig-components';
+import { Typography, Toggle } from '@intouchhealth/cig-components';
 import Grid from '@mui/material/Grid'
 import GridField from "./GridField"
 import CheckboxList from './CheckboxList'
@@ -12,22 +12,20 @@ export default function DetailsTab() {
   return (
     <>
       <Grid container spacing={2} justifyContent="center">
-
-        <Grid container spacing={1} padding={1}>
+      {/** Solve the input field not expanding through the whole width*/}
+        <Grid item xs={12} spacing={1} padding={1}>
+          <GridField leftXs={3} rightXs={9} label={'Enabled:'} div={<Toggle enabled={true} />} />
           <GridField leftXs={3} rightXs={9} label={'Name:'} inputValue={'General Medical'} />
           <GridField leftXs={3} rightXs={9} label={'Display name:'} inputValue={'General Medical'} />
           <GridField leftXs={3} rightXs={9} label={'Explanation:'} inputValue={'Get care 24/7 for non-emergency conditions like & flue, sinus infection, allergies, and more'} />
         </Grid>
-
-        <Grid container>
-          <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: "flex-end" }} >
-            <Typography type="h4">Consult types:</Typography>
-          </Grid>
-          <Grid item xs={9}  >
+        <Grid item xs={12}  >
+          <Box sx={{ p: 1 }}>
             <Box sx={{ p: 1 }}>
-              <CheckboxList items={items} />
+            <Typography type="h4">Consult types</Typography>
             </Box>
-          </Grid>
+            <CheckboxList items={items} />
+          </Box>
         </Grid>
       </Grid>
     </>

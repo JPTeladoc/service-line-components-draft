@@ -81,7 +81,7 @@ export default function BasicTabs() {
     >
       <div style={{ backgroundColor: 'white', width: '80%' }}>
         <div style={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', p: 1, alignItems: 'baseline' }}>
+          <Box sx={{ display: 'flex', p: 1, alignItems: 'center' }}>
             <Box component="span" sx={{ p: 2, flexGrow: 1 }}>
               <Typography type="h3" >Edit Service Line: General Medical</Typography>
             </Box>

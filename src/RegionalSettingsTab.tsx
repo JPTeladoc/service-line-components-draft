@@ -67,7 +67,7 @@ export default function RegionalSettingsTab() {
       <Grid item xs={4}>
         {/** Esta parte de codigo esta repetida, crear un component aparte*/}
         <Box sx={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'baseline' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box component="span" sx={{ p: 1, flexGrow: 1 }}>
               <Typography type="h3" >Regions</Typography>
             </Box>
@@ -91,8 +91,8 @@ export default function RegionalSettingsTab() {
           </List>
         </Box>
 
-        <Box sx={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'baseline' }}>
+        <Box sx={{ width: '100%', paddingTop:'5' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box component="span" sx={{ p: 1, flexGrow: 1 }}>
               <Typography type="h3" >Included Locations</Typography>
             </Box>
@@ -109,15 +109,15 @@ export default function RegionalSettingsTab() {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ height: "200px" }}>
+        <Box sx={{ height: "550px" }}>
           <CheckboxList items={items} />
         </Box>
       </Grid>
       <Grid item xs={8} >
-        <Grid container spacing={1} justifyContent="center" sx={{ p: 1, height: '270px' }} >
+        <Grid container justifyContent="center" >
           <GridField label={"Serviced"} leftXs={3} rightXs={9} div={<Toggle enabled={true} />} />
-          <GridField label={"Region Name:"} leftXs={3} rightXs={9} />
-          <GridField label={"Minimum Age:"} leftXs={3} rightXs={9} />
+          <GridField label={"Region Name:"} inputValue={'SouthWest'} leftXs={3} rightXs={9} />
+          <GridField label={"Minimum Age:"} inputValue={'13'} leftXs={3} rightXs={9} />
           <GridField label={"Maximum Age:"} leftXs={3} rightXs={9} />
         </Grid>
 
@@ -132,7 +132,7 @@ export default function RegionalSettingsTab() {
         </Box>
         <Box sx={{ p: 2 }}>
           <Typography type="h3">Comunication Methods</Typography>
-          <Box sx={{ p: 3, border: 2, borderColor: 'black', borderRadius: 1, overflow: 'scroll', height: '150px' }}>
+          <Box sx={{ p: 3, border: 2, borderColor: 'black', borderRadius: 1, overflow: 'scroll', height: '174px' }}>
             <Table
               accessors={mockAccessors}
               data={mockData}
