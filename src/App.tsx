@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect, useState } from "react";
-import React from 'react';
 import BasicTabs from "./TabNav";
 import LocationsTable from "./LocationsTable";
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Button';
-import Box from '@mui/material/Button';
-
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { InjectFont } from "@intouchhealth/cig-components";
+import { GlobalStyles } from './globalStyle';
 
 function App() {
   return (
-      <div>
+    <div>
+    <GlobalStyles />
+      <InjectFont family="Montserrat" />
+      <BrowserRouter>
         <Switch>
-          <Route path="/BasicTabs" component={BasicTabs} />
+          <Route path="/General Medical" component={BasicTabs} />
           <Route path="/" component={LocationsTable} />
         </Switch>
-      </div>
+      </BrowserRouter>
+    </div>
   );
 };
 
