@@ -6,31 +6,108 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import { Button, Typography, ClearIcon, AddNewIcon, Toggle, Table } from '@intouchhealth/cig-components';
 import Box from '@mui/material/Box'
+import { useState } from 'react';
 
 let items = ["US-AK", "Scheduled", "Future 1", "Future 2", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK",]
+var inputRegions = ["Central",
+  "South",
+  "Midwest",
+  "SouthEast",
+  "SouthWest",
+  "NorthEast"];
 
 interface ListItemProps {
-  callback?: (key: string) => void;
+  callback: () => void;
   title: string;
 }
 
-function RegionalListItem(props: ListItemProps) {
+function RegionsList() {
 
-  const handleClick = (value: string) => {
-    if (props.callback) {
-      props.callback(value)
-    }
+  const [regions, setRegions] = useState<string[]>(inputRegions);
+  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+
+  function addRegion(props: any) {
+    regions.push(props.newRegion)
   }
 
-  {/** Focus the row when selected*/ }
+  function removeSelectedRegions() {
+    let tmp = regions.filter(item => selectedRegions.indexOf(item) < 0);
+    setRegions(tmp)
+  }
+
+  const handleToggle = (value: string) => () => {
+    const currentIndex = selectedRegions.indexOf(value);
+    const newChecked = [...selectedRegions];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setSelectedRegions(newChecked);
+  };
   return (
-    <ListItemButton divider={true} onSelect={() => { console.log('Region Selected!') }}>
+    <>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box component="span" sx={{ p: 1, flexGrow: 1 }}>
+          <Typography type="h3" >Regions</Typography>
+        </Box>
+        {/** Modificar las props para dar padding sin requerir <box>*/}
+        <Box sx={{ p: 1 }}>
+          <Button
+            icon={<AddNewIcon />}
+            appearance="outline"
+            themeName="positive"
+            size="xs"
+            onClick={() => { addRegion({ newRegion: "Titan" }) }} />
+        </Box>
+        <Box sx={{ p: 1 }}>
+          <Button
+            icon={<ClearIcon />}
+            appearance="subtle"
+            themeName="danger"
+            size="xs"
+            onClick={removeSelectedRegions} />
+        </Box>
+      </Box>
+      <List sx={{ overflow: 'scroll', height: 170, border: 2, borderRadius: 1 }}>
+        {
+          regions.map((value, index) => {
+            return (<RegionsListItem title={value} callback={handleToggle(value)} />)
+          })
+        }
+      </List>
+
+    </>
+  )
+  {/** Focus the row when selected*/ }
+}
+
+function RegionsListItem(props: ListItemProps) {
+
+  let selected = false;
+
+  const handleClick = () => {
+    selected = !selected
+    console.log(selected)
+    props.callback();
+  }
+
+  return (
+    <ListItemButton
+      divider={true}
+      onClick={handleClick}
+      key={props.title}
+      selected={selected}
+    >
       <Typography type="h5">{props.title}</Typography>
     </ListItemButton>
   )
 }
 
 export default function RegionalSettingsTab() {
+
 
 
   const mockData = [{
@@ -66,32 +143,14 @@ export default function RegionalSettingsTab() {
     <Grid container spacing={1} justifyContent="center" >
       <Grid item xs={4}>
         {/** Esta parte de codigo esta repetida, crear un component aparte*/}
-        <Box sx={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box component="span" sx={{ p: 1, flexGrow: 1 }}>
-              <Typography type="h3" >Regions</Typography>
-            </Box>
-            {/** Modificar las props para dar padding sin requerir <box>*/}
-            <Box sx={{ p: 1 }}>
-              <Button icon={<AddNewIcon />} appearance="outline" themeName="positive" size="xs" onClick={() => { }} />
-            </Box>
-            <Box sx={{ p: 1 }}>
-              <Button icon={<ClearIcon />} appearance="subtle" themeName="danger" size="xs" onClick={() => { }} />
-            </Box>
-          </Box>
-        </Box>
+
+
+
         <Box>
-          <List sx={{ width: '100%', maxWidth: 400, overflow: 'scroll', maxHeight: 170, border: 2, borderRadius: 1 }}>
-            <RegionalListItem title={"Central"} />
-            <RegionalListItem title={"South"} />
-            <RegionalListItem title={"Midwest"} />
-            <RegionalListItem title={"SouthEast"} />
-            <RegionalListItem title={"SouthWest"} />
-            <RegionalListItem title={"NorthEast"} />
-          </List>
+          <RegionsList />
         </Box>
 
-        <Box sx={{ width: '100%', paddingTop:'5' }}>
+        <Box sx={{ width: '100%', paddingTop: '5' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box component="span" sx={{ p: 1, flexGrow: 1 }}>
               <Typography type="h3" >Included Locations</Typography>
@@ -139,14 +198,6 @@ export default function RegionalSettingsTab() {
             />
           </Box>
         </Box>
-      </Grid>
-
-      <Grid item xs={4}>
-
-      </Grid>
-
-      <Grid item xs={8} >
-
       </Grid>
     </Grid>
   )
