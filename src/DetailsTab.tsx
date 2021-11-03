@@ -3,17 +3,28 @@ import Grid from '@mui/material/Grid'
 import GridField from "./GridField"
 import CheckboxList from './CheckboxList'
 import Box from '@mui/material/Box'
-export default function DetailsTab() {
+import * as React from 'react'
 
-  console.log('rendering details tab again from scratch')
+export default class DetailsTab extends React.Component {
 
-  let items = ["On Demand", "Scheduled", "Future 1", "Future 2"]
+ items = {OnDemand: false, Scheduled: false, "Future 1": true, "Future 2":false}
 
+  componentDidUpdate(prevProps: any) {
+    // Typical usage (don't forget to compare props)
+    console.log('detailstab changing from: ', prevProps)
+    console.log('to: ', this.props)
+  }
+  componentWillUnmount(){
+    console.log('detailstab will unmount')
+  }
+
+
+render() {
   return (
     <>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="center" >
       {/** Solve the input field not expanding through the whole width*/}
-        <Grid item xs={12} spacing={1} padding={1}>
+        <Grid item xs={12} padding={1}>
           <GridField leftXs={3} rightXs={9} label={'Enabled:'} div={<Toggle enabled={true} />} />
           <GridField leftXs={3} rightXs={9} label={'Name:'} inputValue={'General Medical'} />
           <GridField leftXs={3} rightXs={9} label={'Display name:'} inputValue={'General Medical'} />
@@ -24,10 +35,10 @@ export default function DetailsTab() {
             <Box sx={{ p: 1 }}>
             <Typography type="h4">Consult types</Typography>
             </Box>
-            <CheckboxList items={items} />
+            <CheckboxList items={this.items} />
           </Box>
         </Grid>
       </Grid>
     </>
-  )
+  )}
 };

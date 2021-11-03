@@ -23,16 +23,15 @@ export default function GridField(props: FieldProps) {
   let itemsAlignment = '';
 
   if (props.div) {
-    console.log(`div with ${props.label}`)
     Field = props.div
     itemsAlignment = 'baseline'
   } else {
-    console.log(`without div ${props.label}`)
+    // (`without div ${props.label}`)
     Field = <Input initialValue={inputValue} />
     itemsAlignment = 'center'
   }
 
-  console.log(itemsAlignment)
+  // (itemsAlignment)
 
   return (
     <div style={{ width: '100%' }}>

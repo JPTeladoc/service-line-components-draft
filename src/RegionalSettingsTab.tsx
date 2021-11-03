@@ -8,7 +8,8 @@ import { Button, Typography, ClearIcon, AddNewIcon, Toggle, Table } from '@intou
 import Box from '@mui/material/Box'
 import { useState } from 'react';
 
-let items = ["US-AK", "Scheduled", "Future 1", "Future 2", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK", "US-AK",]
+let items : {[id: string]: boolean} = {"US-AK": false, "Scheduled": true, "Future 1": false, "Future 2": false, "US-CA": true, "US-WE": true, "US-ST": true, "US-NT": true}
+
 var inputRegions = ["Central",
   "South",
   "Midwest",
@@ -87,10 +88,14 @@ function RegionsList() {
 function RegionsListItem(props: ListItemProps) {
 
   let selected = false;
+  let bgc = '';
 
   const handleClick = () => {
     selected = !selected
-    console.log(selected)
+    if (selected) {
+      bgc = 'blue'
+    }
+    // (selected)
     props.callback();
   }
 
@@ -99,7 +104,8 @@ function RegionsListItem(props: ListItemProps) {
       divider={true}
       onClick={handleClick}
       key={props.title}
-      selected={selected}
+      autoFocus={true}
+      sx={{background:'bluef'}}
     >
       <Typography type="h5">{props.title}</Typography>
     </ListItemButton>

@@ -11,7 +11,6 @@ export default function Input(props: InputProps) {
   const [value, setValue] = useState<string>(`${props.initialValue}`);
 
   const handleChange = (event: any) => {
-    console.log(event)
     setValue(event);
   };
 
